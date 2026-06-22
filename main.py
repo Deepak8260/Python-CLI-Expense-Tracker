@@ -5,19 +5,73 @@ def main():
 
     manager = ExpenseManager()
 
-    try:
+    while True:
 
-        manager.add_expense(250,"Food","Pizza","2026-06-22")
+        print("\n")
+        print("=" * 40)
+        print("PERSONAL EXPENSE TRACKER")
+        print("=" * 40)
 
-        manager.add_expense(150,"Travel","Auto","2026-06-22")
+        print("1. Add Expense")
+        print("2. View Expenses")
+        print("3. Exit")
 
-        manager.view_expenses()
-
-    except ValueError as error:
-
-        print(
-            f"Error: {error}"
+        choice = input(
+            "\nEnter Choice: "
         )
+
+        try:
+
+            if choice == "1":
+
+                amount = float(
+                    input(
+                        "Enter Amount: "
+                    )
+                )
+
+                category = input(
+                    "Enter Category: "
+                )
+
+                description = input(
+                    "Enter Description: "
+                )
+
+                date = input(
+                    "Enter Date: "
+                )
+
+                manager.add_expense(
+                    amount,
+                    category,
+                    description,
+                    date
+                )
+
+            elif choice == "2":
+
+                manager.view_expenses()
+
+            elif choice == "3":
+
+                print(
+                    "\nThank You."
+                )
+
+                break
+
+            else:
+
+                print(
+                    "\nInvalid Choice."
+                )
+
+        except ValueError as error:
+
+            print(
+                f"\nError: {error}"
+            )
 
 
 if __name__ == "__main__":
