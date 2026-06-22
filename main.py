@@ -1,23 +1,17 @@
-from models.expense import Expense
+from managers.expense_manager import ExpenseManager
 
 
 def main():
 
-    expenses = []
+    manager = ExpenseManager()
 
     try:
 
-        expense1 = Expense(250,"Food","Pizza","2026-06-22")
+        manager.add_expense(250,"Food","Pizza","2026-06-22")
 
-        expense2 = Expense(150,"Travel","Auto","2026-06-22")
+        manager.add_expense(150,"Travel","Auto","2026-06-22")
 
-        expenses.append(expense1)
-        expenses.append(expense2)
-
-        print("\nExpenses:\n")
-
-        for expense in expenses:
-            expense.display()
+        manager.view_expenses()
 
     except ValueError as error:
 
