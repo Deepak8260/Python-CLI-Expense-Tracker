@@ -2,6 +2,8 @@ from models.expense import Expense
 
 from storage.file_handler import FileHandler
 
+from utils.validators import Validators
+
 
 class ExpenseManager:
 
@@ -108,10 +110,29 @@ class ExpenseManager:
                 ]
             )
 
-            expense.amount = amount
-            expense.category = category
-            expense.description = description
-            expense.date = date
+            expense.amount = (
+                Validators.validate_amount(
+                    amount
+                )
+            )
+
+            expense.category = (
+                Validators.validate_category(
+                    category
+                )
+            )
+
+            expense.description = (
+                Validators.validate_description(
+                    description
+                )
+            )
+
+            expense.date = (
+                Validators.validate_date(
+                    date
+                )
+            )
 
             FileHandler.save_expenses(
                 self.expenses

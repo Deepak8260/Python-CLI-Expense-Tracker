@@ -93,7 +93,7 @@ def main():
                 )
 
                 date = input(
-                    "Enter New Date: "
+                    "Enter New Date (YYYY-MM-DD): "
                 )
 
                 manager.update_expense(
